@@ -1,7 +1,7 @@
 class World {
   
     //Limits of the world
-      limits = [[-100, 100], [-100, 100]]
+      limits = data.objective.limit
   
     //List of countries
       countries = new Set()
@@ -65,7 +65,7 @@ class World {
           for(let j=this.limits[1][0]; j<=this.limits[1][1]; j++){
           x_coord.push(i)
           y_coord.push(j)
-          z_coord.push(eggholder(i,j))
+          z_coord.push(data.objective.func(i,j))
           }
         }
         this.map.push({

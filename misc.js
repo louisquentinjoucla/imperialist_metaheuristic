@@ -47,8 +47,16 @@ function init_data(){
     data.debug ? data.debug.clear() : data.debug = new Logger()
 }
 
+function set_test(){
+    stop()
+    layout.xaxis.range = data.objective.limit[0]
+    layout.yaxis.range = data.objective.limit[1]
+    reset()
+}
+
 let inter
-let data = {}
+
+let data = {test_functions: test_functions, objective:test_functions[0]}
 init_data()
 let view = new Vue({el:"#ui", data, mounted(){}})
 let algo = ica({world:new World(), nb_countries:200, nb_imperialists:10, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:5, revolution_rate:0.5, influency_epoch:100}, data)

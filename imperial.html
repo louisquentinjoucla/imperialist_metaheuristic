@@ -23,10 +23,8 @@
           </div>
           <div class="row">
             <label> Test function: </label>
-            <select name="opti_func">
-                <option value="1">Schwefel</option>
-                <option value="2">Rosenbrock</option>
-                <option value="3">Eggholder</option>
+            <select name="opti_func" @change="set_test()" v-model="objective">
+                <option v-for="option in test_functions" v-bind:value="option">{{option.name}}</option>
             </select>
           </div>
         </div>
