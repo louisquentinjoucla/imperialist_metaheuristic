@@ -95,8 +95,10 @@ function* ica({world, nb_countries, nb_imperialists, assimilation_deviation, ass
             let influencies = total_cost_imperialists.map((total_cost_imperialist, i) => imperialists[i].influency = Math.abs((total_cost_imperialist - max_total_cost_imperialists)/sum_total_cost_imperialists))
   
           //Weakest colony
-            let colonies_cost = colonies.map(colony => colony.cost)
-            let weakest = colonies[colonies_cost.indexOf(Math.min(...colonies_cost))]
+            let less_influent = imperialists[influencies.indexOf(Math.min(...influencies))]
+            let less_influent_colonies = less_influent.colonies
+            let colonies_cost = less_influent_colonies.map(colony => colony.cost)
+            let weakest = less_influent_colonies[colonies_cost.indexOf(Math.min(...colonies_cost))]
   
           //Influencies war
             for (let j = 0; j < influency_epoch; j++)
@@ -104,7 +106,7 @@ function* ica({world, nb_countries, nb_imperialists, assimilation_deviation, ass
             let winner = imperialists[influencies.indexOf(Math.max(...influencies))]
   
           //Change the weakest colony allegiance
-            weakest.allegiance = winner
+            if(weakest) weakest.allegiance = winner
   
         //9. Collapse the weakest empire
           for (let imperialist of imperialists)

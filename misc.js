@@ -36,7 +36,7 @@ function stop(){
 
 function reset(){
     init_data()
-    algo = ica({world:new World(), nb_countries:200, nb_imperialists:10, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:5, revolution_rate:0.5, influency_epoch:100}, data)
+    algo = ica({world:new World(), nb_countries:50, nb_imperialists:4, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:5, revolution_rate:0.5, influency_epoch:100}, data)
 }
 
 function init_data(){
@@ -59,5 +59,5 @@ let inter
 let data = {test_functions: test_functions, objective:test_functions[0]}
 init_data()
 let view = new Vue({el:"#ui", data, mounted(){}})
-let algo = ica({world:new World(), nb_countries:200, nb_imperialists:10, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:5, revolution_rate:0.5, influency_epoch:100}, data)
+let algo = ica({world:new World(), nb_countries:50, nb_imperialists:4, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:1, revolution_rate:0.5, influency_epoch:100}, data)
 
