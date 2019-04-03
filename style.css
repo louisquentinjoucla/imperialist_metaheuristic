@@ -3,13 +3,9 @@ body {
     overflow: hidden;
     font-family: monospace;
     background-size:cover;
+    width: 100%;
   }
 
-  #view {
-    width:100vw;
-    height:100vh;
-  }
-  
   #graph {
     width: 100%;
     height: 80%;
@@ -35,9 +31,76 @@ body {
   }
 
   #ui {
-    padding: 1em 1em 1em 1em;
+    padding: 1em;
     height: 20%;
-    width: 100%;
     background-color: rgba(0, 0, 0, 0.84);
     color:white;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  .commands, .parameters {
+    padding: 0.5em 3em 0.5em 3em;
+    height: 15vh;
+    border: 2px solid white;
+  }
+
+  .commands button {
+    border-radius: 15px;
+    border: 2px solid white;
+    padding: 5px 20px 5px 20px;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    cursor: pointer;
+  }
+
+  .commands .row, .parameters .row {
+    margin-top: 10px;
+  }
+  .commands button:hover {
+    background-color: white;
+    color: rgb(42, 42, 42);
+  }
+
+  .commands button:focus {
+    outline: none;
+  }
+  
+  .debug {
+    left:0;
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: 30em;
+    width: 30em;
+    height: 15vh;
+    padding: 5px 5px 5px 5px;
+    overflow-y: scroll;
+    color: white;
+    white-space: pre;
+    background-color: rgba(33, 107, 218, 0.4);
+    display: block;
+  }
+
+  .debug .header {
+    display: flex;
+  }
+
+  .debug h4 {
+    margin: 0
+  }
+  .debug .warn {
+    color: yellow;
+  }
+
+  .debug .success {
+    color: green;
+  }
+
+  .debug .error {
+    color: red;
   }

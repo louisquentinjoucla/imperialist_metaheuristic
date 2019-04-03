@@ -72,7 +72,8 @@ class World {
              x: x_coord,
              y: y_coord,
              z: z_coord,
-             type: 'heatmap'
+             type: 'heatmap',
+             colorscale:'Blues'
         });
       }
   

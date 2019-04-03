@@ -9,24 +9,43 @@
     <div id="graph"></div>
   </main>
   <div id="ui">
-    <template>
-      Iteration : {{ iteration }} <br>
-      Best cost : {{ best.cost.toFixed(2) }} <br>
-      Best solution : ({{ best.variables.map(v => v.toFixed(2)).join(", ") }}) <br>
-      Empires : {{ empires }}
-
-      <div class="options">
-        <div class="row">
-          <button onclick="start()">Start</button>
-          <button onclick="stop()">Stop</button>
-          <button onclick="reset()">Reset</button>
+      <div class="menu">
+        <div class="debug">
+          <div class="header"><h4>iter: {{ iteration }} | Best: {{ best.cost.toFixed(2) }} ({{ best.variables.map(v => v.toFixed(2)).join(", ") }})</h4></div>
+          <div v-for="log in debug.logs" v-bind:class="{[log.type]:true}"> {{ log.text }} </div>
         </div>
-        <div class="row">
-          <!-- <input type="number" aria-label="Population">
-          <input type="number" aria-label="Imperialist">  -->
+        <div class="commands">
+          <h3> Commands: </h3>
+          <div class="row">
+            <button onclick="start()">Start</button>
+            <button onclick="stop()">Stop</button>
+            <button onclick="reset()">Reset</button>
+          </div>
+          <div class="row">
+            <label> Test function: </label>
+            <select name="opti_func">
+                <option value="1">Schwefel</option>
+                <option value="2">Rosenbrock</option>
+                <option value="3">Eggholder</option>
+            </select>
+          </div>
         </div>
-      </div>
-    </template>
+        <div class="parameters">
+            <h3> Parameters: </h3>
+            <div class="row">
+                <label> Num. countries: </label>
+                <input type="number"/>
+            </div>
+            <div class="row">
+                <label> Num. imperialist: </label>
+                <input type="number"/>
+            </div>
+            <div class="row">
+                <label> Assim rate: </label>
+                <input type="number"/>
+            </div>
+        </div>
+    </div>
   </div>
 
   <script src="lib/plotly.min.js"></script>
@@ -36,6 +55,7 @@
   <script src="src/world.js"></script>
   <script src="src/ica.js"></script>
   <script src="src/objective.js"></script>
+  <script src="src/logger.js"></script>
   <script src="misc.js"></script>
 
 </body>

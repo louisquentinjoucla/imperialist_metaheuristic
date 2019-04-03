@@ -110,14 +110,14 @@ function* ica({world, nb_countries, nb_imperialists, assimilation_deviation, ass
           for (let imperialist of imperialists)
             if (imperialist.colonies.length === 0) {
               imperialist.allegiance = null
-              console.log(`An empire collapsed (iteration ${iteration})`)
+              data.debug.warn(`An empire collapsed (iteration ${iteration})`)
             }
               
         //Update best solution
           let countries_cost = countries.map(country => country.cost)
           let best_country = countries[countries_cost.indexOf(Math.min(...countries_cost))]
           if (best_country.cost < best.cost) {
-            console.log(`Previous best : ${best.cost} --> New best : ${best_country.cost}`)
+            data.debug.success(`Previous best : ${best.cost.toFixed(2)} --> New best : ${best_country.cost.toFixed(2)}`)
             best = {variables:best_country.variables.slice(), cost:best_country.cost}
           }
   
