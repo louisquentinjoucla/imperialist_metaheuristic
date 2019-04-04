@@ -32,6 +32,11 @@ class World {
       get colonies() {
         return [...this.countries].filter(country => !country.imperialist)
       }
+    
+    //List of city states 
+      get city_states() {
+        return [...this.countries].filter(country => country.imperialist === null)
+      }
   
     //Update colors after an overthrow
       update_colors(prev, next) {
@@ -96,7 +101,7 @@ class World {
             trace.x = [imperialist.variables[0]]
             trace.y = [imperialist.variables[1]]
             //trace.z = [imperialist.cost]
-            trace.marker.color = this._colors.get(imperialist)
+            trace.marker.color = imperialist.color
             trace.marker.symbol = "diamond"
             trace.marker.size = 18
             traces.push(trace)
@@ -106,10 +111,9 @@ class World {
               mode: 'markers',
               marker: {
                 symbol: "circle",
-                color: this._colors.get(imperialist),
+                color: imperialist.color,
                 size: 10,
-                line: {
-                width: 1},
+                line: {width: 1},
                 opacity: 0.8},
               type: 'scatter2d'
             };
@@ -125,7 +129,29 @@ class World {
             }
             traces.push(ctrace)
             
-        }  
+        }
+        
+
+        let ct_trace = {
+          mode: 'markers',
+          x:[],
+          y:[],
+          z:[],
+          marker: {
+            symbol: "pentagon",
+            size: 12,
+            line: {width: 1},
+            color: 'rgb(0,0,0)',
+            opacity: 0.8},
+          type: 'scatter2d'
+        };
+
+        for(let city of this.city_states){
+          ct_trace.x.push(city.variables[0])
+          ct_trace.y.push(city.variables[1])
+        }
+        traces.push(ct_trace)
+
         return traces
       }
 
