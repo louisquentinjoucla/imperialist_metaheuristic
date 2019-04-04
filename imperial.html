@@ -28,6 +28,11 @@
           <option v-for="option in test_functions" v-bind:value="option">{{option.name}}</option>
         </select>
       </label>
+      <div>
+        <div class="bar">
+          <div v-for="empire in empires" :style="{width:100*empire.x/(parameters.nb_countries-parameters.nb_imperialists)+'%', 'background-color':empire.color}"></div>
+        </div>
+      </div>
     </div>
     <div class="parameters">
       <h4> Parameters: </h4>

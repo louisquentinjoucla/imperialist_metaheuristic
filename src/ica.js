@@ -35,7 +35,7 @@ async function* ica(parameters) {
   
     //Main loop
       await world.create_or_update_graph(true)
-      let update = () => { data.iteration = iteration ; data.countries = countries ; data.empires = imperialists.map(v => v.colonies.length) ; data.best = best }
+      let update = () => { data.iteration = iteration ; data.countries = countries ; data.empires = imperialists.map(v => { return {x:v.colonies.length, color:v.color} }) ; data.best = best }
       while (++iteration) {
   
         //Update colonies and imperialist lists
