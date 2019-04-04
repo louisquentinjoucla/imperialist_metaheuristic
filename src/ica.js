@@ -101,7 +101,7 @@ async function* ica(parameters) {
             let less_influent = imperialists[influencies.indexOf(Math.min(...influencies))]
             let less_influent_colonies = less_influent.colonies.concat(world.city_states)
             let colonies_cost = less_influent_colonies.map(colony => colony.cost)
-            let weakest = less_influent_colonies[colonies_cost.indexOf(Math.min(...colonies_cost))]
+            let weakest = less_influent_colonies[colonies_cost.indexOf(Math.max(...colonies_cost))]
   
           //Influencies war
             for (let j = 0; j < influency_epoch; j++)

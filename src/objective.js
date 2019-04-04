@@ -1,6 +1,5 @@
 function objective(solution) {
     let x = solution.variables[0], y = solution.variables[1]
-    //return - (y + 47) * Math.sin(Math.abs(x/2 + (y + 47))**.5) - x * Math.sin(Math.abs(x - (y + 47))**.5)
     return data.objective.func(x,y);
 }
 
