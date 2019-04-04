@@ -43,7 +43,7 @@ class World {
     //Colors initializer
       colors() {
         //let colors = ["#FFFFFF", "#FF0000", "#800000", "#FFFF00", "#808000", "#00FF00", "#008000", "#00FFFF", "#008080", "#0000FF", "#000080", "#FF00FF", "#800080"]
-        let colors = ["rgb(255, 255, 255)", "rgb(255, 0, 0)", "rgb(128, 0, 0)", "rgb(255, 255, 0)", "rgb(128, 128, 0)", "rgb(0, 255, 0)", "rgb(0, 128, 0)", "rgb(0, 255, 255)", "rgb(0, 128, 128)", "rgb(0, 0, 255)", "rgb(0, 0, 128)", "rgb(255, 0, 255)", "rgb(128, 0, 128)"]
+        let colors = ["rgb(255, 255, 255)", "rgb(255, 0, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(255, 255, 0)", "rgb(0, 255, 255)", "rgb(255, 0, 255)", "rgb(128, 0, 0)", "rgb(0, 128, 0)",  "rgb(0, 0, 128)", "rgb(128, 128, 0)", "rgb(0, 128, 128)",  "rgb(128, 0, 128)"]
         this._colors = new Map()
         for (let i = 0; i < this.imperialists.length; i++)
           this._colors.set(this.imperialists[i], colors[i])

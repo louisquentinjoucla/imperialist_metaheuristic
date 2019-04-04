@@ -85,7 +85,7 @@ function step() {
 }
 
 function reset(){
-    init_data()
+    data.inter = null
     data.algo = null
 }
 
