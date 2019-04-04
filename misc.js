@@ -104,7 +104,7 @@ function set_test(){
     reset()
 }
 
-let data = {algo:null, inter:null, test_functions, objective:test_functions[0], parameters:{nb_countries:50, nb_imperialists:4, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:2, revolution_rate:0.1, influency_epoch:100}}
+let data = {algo:null, inter:null, test_functions, objective:test_functions[0], parameters:{nb_countries:100, nb_imperialists:10, assimilation_deviation:Math.PI/4, assimilation_direction:0.05, colonies_power:0.01, revolution_scale:2, revolution_rate:0.1, influency_epoch:10}}
 init_data()
 let view = new Vue({el:"#ui", data, computed:{running() { return !!this.$data.inter }}, mounted(){}})
 data.algo = null
