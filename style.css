@@ -1,106 +1,108 @@
 body {
-    margin: 0;
-    overflow: hidden;
-    font-family: monospace;
-    background-size:cover;
-    width: 100%;
-  }
+  margin: 0;
+  overflow: hidden;
+  font-family: monospace;
+  background-color:rgba(0, 0, 0, 0.84);
+}
 
-  #graph {
-    width: 100%;
-    height: 80%;
-    background-color:rgba(0, 0, 0, 0.84);
-  }
+#graph {
+  width: 100vw;
+  height: 80vh;
+}
 
-  .country {
-    position: absolute;
-    top: -5px; left: -5px;
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    transform-origin: center;
-  }
+#ui {
+  border-top: 1px solid rgba(255,255,255,.5);
+  height: 20vh;
+  color:white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255,255,255,.1);
+}
 
-  .imperialist {
-    display: flex;
-    justify-content:center;
-    top: -12.5px; left: -12.5px;
-    z-index: 999;
-    height: 25px;
-    width: 25px;
-  }
+#ui > div {
+  height: 100%;
+  flex-shrink: 1;
+  flex-basis: 32%;
+}
 
-  #ui {
-    padding: 1em;
-    height: 20%;
-    background-color: rgba(0, 0, 0, 0.84);
-    color:white;
-  }
+#ui h4 {
+  margin: 0;
+  margin-bottom: .5rem;
+}
 
-  .menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+button, select {
+  border-radius: 10px;
+  border: 2px solid white;
+  padding: 5px 20px 5px 20px;
+  background-color: rgba(0,0,0,0);
+  color: white;
+  cursor: pointer;
+}
 
-  }
+button:hover {
+  background-color: white;
+  color: rgb(42, 42, 42);
+}
 
-  .commands, .parameters {
-    padding: 0.5em 3em 0.5em 3em;
-    height: 15vh;
-    border: 2px solid white;
-  }
+button:focus {
+  outline: none;
+}
 
-  .commands button {
-    border-radius: 15px;
-    border: 2px solid white;
-    padding: 5px 20px 5px 20px;
-    background-color: rgba(0,0,0,0);
-    color: white;
-    cursor: pointer;
-  }
+[disabled] {
+  opacity: 0.4;
+}
 
-  .commands .row, .parameters .row {
-    margin-top: 10px;
-  }
-  .commands button:hover {
-    background-color: white;
-    color: rgb(42, 42, 42);
-  }
+select option {
+  color: black;
+}
 
-  .commands button:focus {
-    outline: none;
-  }
-  
-  .debug {
-    left:0;
-    flex-shrink: 1;
-    flex-grow: 0;
-    flex-basis: 30em;
-    width: 30em;
-    height: 15vh;
-    padding: 5px 5px 5px 5px;
-    overflow-y: scroll;
-    color: white;
-    white-space: pre;
-    background-color: rgba(33, 107, 218, 0.4);
-    display: block;
-  }
+.debug {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: pre;
+  background-color: rgba(33, 107, 218, 0.4);
+}
 
-  .debug .header {
-    display: flex;
-  }
+.debug .warn {
+  color: yellow;
+}
 
-  .debug h4 {
-    margin: 0
-  }
-  .debug .warn {
-    color: yellow;
-  }
+.debug .success {
+  color: green;
+}
 
-  .debug .success {
-    color: green;
-  }
+.debug .error {
+  color: red;
+}
 
-  .debug .error {
-    color: red;
-  }
+.commands .buttons {
+  margin-bottom: .5rem;
+}
+
+.parameters {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.parameters label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.parameters input {
+  width: 30%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.commands h4, .parameters h4 {
+  font-size: 1.2rem;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}

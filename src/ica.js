@@ -1,8 +1,8 @@
-function* ica({world, nb_countries, nb_imperialists, assimilation_deviation, assimilation_direction, colonies_power, revolution_scale, revolution_rate, influency_epoch}) {
+function* ica(parameters) {
     //Initialisation
+      let {world, nb_countries, nb_imperialists, assimilation_deviation, assimilation_direction, colonies_power, revolution_scale, revolution_rate, influency_epoch} = parameters
       let best = {variables:[], cost:Infinity}
       let iteration = 0
-      
       
     //1. Generate countries
       let countries = []

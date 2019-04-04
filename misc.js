@@ -24,19 +24,28 @@ layout = {
 };
 
 function start(){
-    if(!inter)
-      inter=setInterval(() => algo.next(), 0)
+    if (!data.algo) {
+      init_data()
+      data.algo = ica({world:new World(), ...view.$data.parameters}, data)
+    }
+    if(!data.inter)
+      data.inter=setInterval(() => data.algo.next(), 0)
 
 }
 
 function stop(){
-    clearInterval(inter);
-    inter = null
+    clearInterval(data.inter);
+    data.inter = null
+}
+
+function step() {
+  stop()
+  data.algo.next()
 }
 
 function reset(){
     init_data()
-    algo = ica({world:new World(), nb_countries:50, nb_imperialists:4, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:5, revolution_rate:0.5, influency_epoch:100}, data)
+    data.algo = null
 }
 
 function init_data(){
@@ -54,10 +63,8 @@ function set_test(){
     reset()
 }
 
-let inter
-
-let data = {test_functions: test_functions, objective:test_functions[0]}
+let data = {algo:null, inter:null, test_functions, objective:test_functions[0], parameters:{nb_countries:50, nb_imperialists:4, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:5, revolution_rate:0.5, influency_epoch:100}}
 init_data()
-let view = new Vue({el:"#ui", data, mounted(){}})
-let algo = ica({world:new World(), nb_countries:50, nb_imperialists:4, assimilation_deviation:Math.PI/4, assimilation_direction:0.025, colonies_power:0.01, revolution_scale:1, revolution_rate:0.5, influency_epoch:100}, data)
+let view = new Vue({el:"#ui", data, computed:{running() { return !!this.$data.inter }}, mounted(){}})
+data.algo = null
 
