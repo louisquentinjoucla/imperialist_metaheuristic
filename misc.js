@@ -44,17 +44,12 @@ layout_heatmap = {
     color:"white"
   },
   xaxis:{
-    range: [-100,100],
     fixedrange: true
   },
   yaxis:{
-    range: [-100,100],
     fixedrange: true
   }
 };
-
-
-
 
 function start(){
     if (!data.algo) {
@@ -90,6 +85,8 @@ function reset(){
 }
 
 function init_data(){
+    layout.xaxis.range = data.objective.limit[0]
+    layout.yaxis.range = data.objective.limit[1]
     data.countries = []
     data.empires = []
     data.best = {variables:[], cost: Infinity}
