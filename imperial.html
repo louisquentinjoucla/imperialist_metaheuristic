@@ -30,7 +30,7 @@
       </label>
       <div>
         <div class="bar">
-          <div v-for="empire in empires" :style="{width:100*empire.x/(parameters.nb_countries-parameters.nb_imperialists)+'%', 'background-color':empire.color}"></div>
+          <div v-for="empire in empires" :style="{width:100*(empire.x+1)/parameters.nb_countries+'%', 'background-color':empire.color}"></div>
         </div>
       </div>
     </div>
