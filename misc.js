@@ -4,6 +4,40 @@ noise.seed(random())
 layout = {
   autosize: true,
   showlegend: false,
+  plot_bgcolor: "rgba(40, 40, 40, 0)",
+  paper_bgcolor:"rgba(40, 40, 40, 0)",
+  font:{
+    color:"white"
+  },
+  xaxis:{
+    range: [-100,100],
+    showgrid: false,
+    showline: false,
+    zeroline:false,
+    showticklabels: false,
+    ticks: '',
+    autotick: true,
+    fixedrange: true
+  },
+  yaxis:{
+    range: [-100,100],
+    showgrid: false,
+    showline: false,
+    zeroline:false,
+    showticklabels: false,
+    ticks: '',
+    autotick: true,
+    fixedrange: true
+  },
+  margin: {
+    r: 122,
+  }
+};
+
+
+layout_heatmap = {
+  autosize: true,
+  showlegend: false,
   plot_bgcolor: "rgb(40, 40, 40)",
   paper_bgcolor:"rgb(40, 40, 40)",
   font:{
@@ -11,34 +45,41 @@ layout = {
   },
   xaxis:{
     range: [-100,100],
+    fixedrange: true
   },
   yaxis:{
     range: [-100,100],
-  },
-  margin: {
-    l: 65,
-    r: 50,
-    b: 65,
-    t: 90,
+    fixedrange: true
   }
 };
+
+
+
 
 function start(){
     if (!data.algo) {
       init_data()
       data.algo = ica({world:new World(), ...view.$data.parameters}, data)
     }
-    if(!data.inter)
-      data.inter=setInterval(() => data.algo.next(), 0)
+    if(!data.inter) {
+      data.inter = true
+      next()
+    }
+}
 
+async function next() {
+  if (!data.inter) return
+  await data.algo.next()
+  setTimeout(next)
 }
 
 function stop(){
-    clearInterval(data.inter);
     data.inter = null
 }
 
 function step() {
+  if (!data.algo)
+    start()
   stop()
   data.algo.next()
 }

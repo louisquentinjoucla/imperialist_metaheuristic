@@ -5,9 +5,22 @@ body {
   background-color:rgba(0, 0, 0, 0.84);
 }
 
-#graph {
+main {
   width: 100vw;
   height: 80vh;
+  position: relative;
+}
+
+main #graph, main #graph-heatmap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+main #graph-heatmap {
+  z-index: -1;
 }
 
 #ui {
@@ -58,8 +71,7 @@ select option {
 }
 
 .debug {
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: auto;
   white-space: pre;
   background-color: rgba(33, 107, 218, 0.4);
 }
@@ -74,6 +86,10 @@ select option {
 
 .debug .error {
   color: red;
+}
+
+.commands {
+  overflow: auto;
 }
 
 .commands .buttons {

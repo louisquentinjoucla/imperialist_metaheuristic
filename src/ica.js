@@ -1,4 +1,4 @@
-function* ica(parameters) {
+async function* ica(parameters) {
     //Initialisation
       let {world, nb_countries, nb_imperialists, assimilation_deviation, assimilation_direction, colonies_power, revolution_scale, revolution_rate, influency_epoch} = parameters
       let best = {variables:[], cost:Infinity}
@@ -34,6 +34,7 @@ function* ica(parameters) {
       }
   
     //Main loop
+      await world.create_or_update_graph(true)
       let update = () => { data.iteration = iteration ; data.countries = countries ; data.empires = imperialists.map(v => v.colonies.length) ; data.best = best }
       while (++iteration) {
   
@@ -42,7 +43,7 @@ function* ica(parameters) {
           colonies = world.colonies
           imperialists = world.imperialists
           update()
-          world.create_or_update_graph()
+          await world.create_or_update_graph()
   
         //Update colonies with assimilation and revolutions
           for (let colony of colonies) {
@@ -65,6 +66,8 @@ function* ica(parameters) {
               colony.clamp()   
           }
   
+          await world.just_update_graph()
+
         //7. Overthrow of imperialists
           for (let imperialist of imperialists) {
             

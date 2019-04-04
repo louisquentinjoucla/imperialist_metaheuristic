@@ -6,6 +6,7 @@
 
 <body>
   <main>
+      <div id="graph-heatmap"></div>
     <div id="graph"></div>
   </main>
   <div id="ui">
@@ -17,7 +18,7 @@
       <h4> Commands: </h4>
       <div class="buttons">
         <button @click="start()">Start</button>
-        <button @click="step()" :disabled="!algo || running">Step</button>
+        <button @click="step()">Step</button>
         <button @click="stop()" :disabled="!algo || !running">Stop</button>
         <button @click="reset()" :disabled="!algo">Reset</button>
       </div>

@@ -77,8 +77,7 @@ class World {
         });
       }
   
-    // Update graph markers
-      create_or_update_graph(){
+      compute_traces() {
         let traces = []
         for (let imperialist of this.imperialists) {
           let trace = {
@@ -127,6 +126,31 @@ class World {
             traces.push(ctrace)
             
         }  
-          this.graph = Plotly.newPlot('graph', traces.concat(this.map), layout)
+        return traces
+      }
+
+    // Update graph markers
+      async create_or_update_graph(heatmap = false){
+          let traces = this.compute_traces()
+          if (heatmap) await Plotly.react('graph-heatmap', this.map, layout)
+          await Plotly.react('graph', traces, layout)
+      }
+
+    //
+      just_update_graph() {
+        //this.create_or_update_graph()
+        //return null
+        let data = this.compute_traces()
+        return Plotly.animate('graph', {
+          data,
+        }, {
+          transition: {
+            duration: 250,
+            easing: 'cubic-in-out'
+          },
+          frame: {
+            duration: 250
+          }
+        })
       }
   }
